@@ -1,0 +1,480 @@
+{
+  "info": {
+    "name": "Controle de Ponto — MVP (Grupo Locar)",
+    "_postman_id": "tpl-20250913121945734986",
+    "description": "Coleção de endpoints para o MVP do Sistema de Controle de Ponto.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:4000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "manager_token",
+      "value": ""
+    },
+    {
+      "key": "admin_token",
+      "value": ""
+    },
+    {
+      "key": "from",
+      "value": "2025-09-01"
+    },
+    {
+      "key": "to",
+      "value": "2025-09-30"
+    },
+    {
+      "key": "month",
+      "value": "2025-09"
+    },
+    {
+      "key": "today",
+      "value": "2025-09-13"
+    },
+    {
+      "key": "today_plus_7",
+      "value": "2025-09-20"
+    },
+    {
+      "key": "now_iso",
+      "value": "2025-09-13T12:19:45Z"
+    },
+    {
+      "key": "adj_id",
+      "value": "<ajuste_id>"
+    },
+    {
+      "key": "user_id",
+      "value": "<user_id>"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Fulano\",\n  \"email\": \"fulano@ex.com\",\n  \"password\": \"senha123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"fulano@ex.com\",\n  \"password\": \"senha123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Me",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "me"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Records",
+      "item": [
+        {
+          "name": "Create Record (bater ponto)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/records",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "records"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"IN\",\n  \"timestamp\": \"{{now_iso}}\",\n  \"source\": \"web\",\n  \"geo\": {\n    \"lat\": -22.9,\n    \"lng\": -43.2,\n    \"accuracy\": 20\n  },\n  \"photo\": \"(base64 opcional)\"\n}"
+            }
+          }
+        },
+        {
+          "name": "List My Records",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/records?from={{from}}&to={{to}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "records"
+              ],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "{{from}}"
+                },
+                {
+                  "key": "to",
+                  "value": "{{to}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mirror",
+      "item": [
+        {
+          "name": "Get Mirror (month)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/mirror?month={{month}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "mirror"
+              ],
+              "query": [
+                {
+                  "key": "month",
+                  "value": "{{month}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Adjustments & Approvals",
+      "item": [
+        {
+          "name": "Request Adjustment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/adjustments",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "adjustments"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"period\": {\n    \"date\": \"{{today}}\"\n  },\n  \"from\": \"08:00\",\n  \"to\": \"17:00\",\n  \"reason\": \"Esqueci de bater saída\",\n  \"attachmentUrl\": \"https://files.example/atestados/laudo.pdf\"\n}"
+            }
+          }
+        },
+        {
+          "name": "List Pending Approvals (manager)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{manager_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/approvals/pending",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "approvals",
+                "pending"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Approve Adjustment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{manager_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/approvals/{{adj_id}}/approve",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "approvals",
+                "{{adj_id}}",
+                "approve"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Reject Adjustment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{manager_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/approvals/{{adj_id}}/reject",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "approvals",
+                "{{adj_id}}",
+                "reject"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Leaves (Afastamentos/Férias)",
+      "item": [
+        {
+          "name": "Create Leave",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{manager_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/leaves",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "leaves"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{user_id}}\",\n  \"type\": \"FERIAS\",\n  \"start\": \"{{today}}\",\n  \"end\": \"{{today_plus_7}}\",\n  \"notes\": \"Férias programadas\"\n}"
+            }
+          }
+        },
+        {
+          "name": "List Leaves",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{manager_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/leaves?userId={{user_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "leaves"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "{{user_id}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Policies",
+      "item": [
+        {
+          "name": "Get Policies",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/policies",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "policies"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Policies",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/policies",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "policies"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"autoApprove\": {\n    \"geoRecords\": true,\n    \"manualAdjustments\": false,\n    \"offlineRecords\": false,\n    \"medicalCertificates\": false\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Engagement",
+      "item": [
+        {
+          "name": "Weekly Engagement",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{manager_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/engagement/weekly",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "engagement",
+                "weekly"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
