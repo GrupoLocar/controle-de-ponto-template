@@ -2,7 +2,7 @@
 > Teste técnico — Desenvolvedor(a) Fullstack Node/Python/React (Grupo Locar)
 
 Este repositório é um **template** para iniciar o MVP do Sistema de Controle de Ponto solicitado no teste.
-Ele vem com diretórios **backend/**, **frontend/** e **docs/** (com a coleção do Postman). **Não utiliza Docker**.
+Ele vem com diretórios **backend/**, **frontend/** e **docs/** (com a coleção do Postman).
 
 ---
 
@@ -15,7 +15,7 @@ Ele vem com diretórios **backend/**, **frontend/** e **docs/** (com a coleção
 
 ---
 
-## 📁 Estrutura
+## 📁 Estrutura (Sugestão)
 ```
 controle-de-ponto-template/
 ├─ backend/            # API Express (Node.js) — inicial
