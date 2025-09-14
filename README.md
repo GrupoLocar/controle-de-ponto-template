@@ -74,4 +74,13 @@ Ajuste `NEXT_PUBLIC_API_BASE` no frontend se necessário (padrão: `http://local
 ---
 
 ## 📦 Entrega
-- Publique em um repositório GitHub **público** chamado **controle-de-ponto** e inclua README atualizado.
+- Publique um repositório **público** no GitHub chamado **controle-de-ponto** e inclua README atualizado.
+- Envie um e-mail para **ti@grupolocar.com**
+```bash
+Assunto: "Desenvolvedor(a) Fullstack Node/Python/React – Pleno e Sênior"
+- Nome completo
+- Link do seu repositório
+```
+
+
+Boa sorte!
