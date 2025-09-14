@@ -1,4 +1,4 @@
-# Controle de Ponto — Fase 1 – MVP  (Template)
+# Controle de Ponto (Template) Fase 1 - MVP
 > Teste técnico — Desenvolvedor(a) Fullstack Node/Python/React (Grupo Locar)
 
 Este repositório é um **template** para iniciar o MVP do Sistema de Controle de Ponto solicitado no teste.
