@@ -55,4 +55,4 @@ Assunto: "Desenvolvedor(a) Fullstack Node.js/Express/JavaScript/React/Python/Mon
 ```
 
 
-Boa sorte!!! 🚀
+Boa sorte!!! 
