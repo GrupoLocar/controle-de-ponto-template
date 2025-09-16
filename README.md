@@ -1,5 +1,5 @@
 # Controle de Ponto (Template)
-> Teste técnico — Desenvolvedor(a) Fullstack Node/Python/React (Grupo Locar)
+> Teste técnico — Desenvolvedor(a) Fullstack Node.js/Express/JavaScript/React/Python/MongoDB (Pleno e Sênior)
 
 Este repositório é um **template** para iniciar o MVP de um **Sistema de Controle de Ponto** que contém uma coleção de Endpoints sugeridos para testes no Postman na pasta **docs/**
 
